@@ -441,7 +441,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 120px; }
     padding: 3rem 2rem;
 }
 
-/* === COMPARE CARDS === */
+/* === COMPARE CARDS (DARK) === */
 .compare-card {
     border-radius: 16px;
     padding: 2rem;
@@ -453,6 +453,41 @@ html { scroll-behavior: smooth; scroll-padding-top: 120px; }
 .compare-good {
     background: rgba(49, 159, 225, 0.04);
     border: 1px solid rgba(49, 159, 225, 0.15);
+}
+
+/* === COMPARE CARDS (LIGHT) === */
+.compare-card-light {
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+.compare-bad-light {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.compare-bad-light:hover {
+    border-color: #fca5a5;
+    box-shadow: 0 4px 12px rgba(239,68,68,0.06);
+}
+.compare-good-light {
+    background: linear-gradient(135deg, rgba(49,159,225,0.04), rgba(16,185,129,0.04));
+    border: 2px solid #319fe1;
+    box-shadow: 0 4px 16px rgba(49,159,225,0.1);
+}
+.compare-good-light:hover {
+    box-shadow: 0 8px 24px rgba(49,159,225,0.15);
+    transform: translateY(-2px);
+}
+
+/* === GUARANTEE CARD (LIGHT) === */
+.guarantee-card-light {
+    position: relative;
+    background: #fff;
+    border: 2px solid rgba(49, 159, 225, 0.2);
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    box-shadow: 0 8px 32px rgba(49,159,225,0.08);
 }
 
 /* === FAQ === */
