@@ -506,6 +506,25 @@ html { scroll-behavior: smooth; scroll-padding-top: 120px; }
     background: rgba(49, 159, 225, 0.03);
 }
 
+/* === PUBLICATION LOGOS === */
+.pub-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.35;
+    transition: opacity 0.3s ease;
+    filter: grayscale(100%);
+}
+.pub-logo:hover {
+    opacity: 0.7;
+    filter: grayscale(0%);
+}
+.pub-text {
+    color: #1a1a2e;
+    white-space: nowrap;
+    user-select: none;
+}
+
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
     .stat-card {
