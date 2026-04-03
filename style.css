@@ -172,6 +172,83 @@ html { scroll-behavior: smooth; scroll-padding-top: 120px; }
     font-family: 'Inter', sans-serif;
 }
 
+/* === WAVEFORM BARS === */
+.waveform-bar {
+    animation: waveform 1.2s ease-in-out infinite;
+}
+.waveform-bar:nth-child(1) { height: 6px; animation-delay: 0s; }
+.waveform-bar:nth-child(2) { height: 12px; animation-delay: 0.15s; }
+.waveform-bar:nth-child(3) { height: 8px; animation-delay: 0.3s; }
+.waveform-bar:nth-child(4) { height: 14px; animation-delay: 0.45s; }
+.waveform-bar:nth-child(5) { height: 6px; animation-delay: 0.6s; }
+@keyframes waveform {
+    0%, 100% { height: 4px; }
+    50% { height: 14px; }
+}
+
+/* === PROCESS TABS === */
+.process-tab {
+    font-size: 11px;
+    font-weight: 600;
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.02);
+    color: rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.process-tab.active {
+    background: rgba(49, 159, 225, 0.12);
+    border-color: rgba(49, 159, 225, 0.3);
+    color: #319fe1;
+}
+.process-tab:hover:not(.active) {
+    color: rgba(255,255,255,0.6);
+    border-color: rgba(255,255,255,0.12);
+}
+
+/* === PROCESS VISUAL PANEL === */
+.process-visual-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 2rem;
+    animation: processFadeIn 0.5s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.process-visual-card .pv-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    background: rgba(49, 159, 225, 0.1);
+    border: 1px solid rgba(49, 159, 225, 0.2);
+}
+.process-visual-card .pv-icon svg { color: #319fe1; }
+.process-visual-card .pv-stat {
+    display: inline-block;
+    background: rgba(49, 159, 225, 0.08);
+    border: 1px solid rgba(49, 159, 225, 0.15);
+    border-radius: 8px;
+    padding: 6px 12px;
+    margin-top: 1rem;
+}
+.process-text-panel {
+    animation: processFadeIn 0.5s cubic-bezier(0.16,1,0.3,1) forwards;
+    animation-delay: 0.1s;
+    opacity: 0;
+}
+@keyframes processFadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 /* === ANIMATIONS === */
 .fade-in-up {
     opacity: 0;
