@@ -198,23 +198,25 @@ html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 }
 .ticker-track {
     display: flex;
-    gap: 2rem;
-    animation: ticker 30s linear infinite;
+    gap: 1.5rem;
+    animation: ticker 40s linear infinite;
     width: max-content;
 }
 .ticker-item {
     white-space: nowrap;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.2);
-    padding: 0.5rem 1.25rem;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 0.625rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 100px;
+    background: rgba(255, 255, 255, 0.04);
     transition: all 0.3s ease;
 }
 .ticker-item:hover {
-    color: rgba(49, 159, 225, 0.6);
-    border-color: rgba(49, 159, 225, 0.2);
+    color: #319fe1;
+    border-color: rgba(49, 159, 225, 0.4);
+    background: rgba(49, 159, 225, 0.08);
 }
 @keyframes ticker {
     0% { transform: translateX(0); }
