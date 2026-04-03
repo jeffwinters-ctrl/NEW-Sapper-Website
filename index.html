@@ -41,8 +41,20 @@
 </head>
 <body class="bg-navy-950 text-white font-sans antialiased">
 
+    <!-- ANNOUNCEMENT BANNER -->
+    <div id="announcement-bar" class="relative z-[60] bg-gradient-to-r from-accent-dark via-accent to-accent-dark text-navy-950">
+        <div class="max-w-7xl mx-auto flex items-center justify-center px-4 py-2 gap-3">
+            <span class="shrink-0 rounded bg-navy-950/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm">New</span>
+            <p class="text-[13px] sm:text-sm font-medium">Direct mail outreach now boosting conversion rates by 40%</p>
+            <a href="#process" class="group inline-flex shrink-0 items-center gap-1 rounded-full border border-navy-950/20 bg-navy-950/10 px-3 py-1 text-xs font-semibold transition-all hover:bg-navy-950/20">
+                Learn more
+                <svg class="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </div>
+
     <!-- NAV -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300">
+    <nav id="navbar" class="fixed top-[36px] w-full z-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             <a href="#" class="flex items-center gap-3">
                 <div class="w-10 h-10 bg-accent rounded-lg flex items-center justify-center font-bold text-navy-950 text-xl">S</div>
@@ -71,11 +83,12 @@
     </nav>
 
     <!-- HERO -->
-    <section class="relative min-h-screen flex items-center overflow-hidden pt-20">
+    <section class="relative min-h-screen flex items-center overflow-hidden pt-24">
         <div class="absolute inset-0 hero-gradient"></div>
-        <div class="absolute inset-0 hero-grid opacity-[0.03]"></div>
-        <div class="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px]"></div>
-        <div class="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-accent/3 rounded-full blur-[100px]"></div>
+        <div class="absolute inset-0 hero-grid-mask"></div>
+        <div class="absolute left-1/2 top-0 h-[700px] w-[1200px] -translate-x-1/2 rounded-full bg-gradient-to-br from-accent/15 via-accent/8 to-transparent blur-[100px] animate-float-slow"></div>
+        <div class="absolute right-[5%] top-[15%] h-[500px] w-[500px] rounded-full bg-gradient-to-bl from-accent/10 to-transparent blur-[100px] animate-float-slow" style="animation-delay:2s;animation-duration:25s"></div>
+        <div class="absolute left-[10%] bottom-[20%] h-[300px] w-[300px] rounded-full bg-gradient-to-tr from-accent/8 to-transparent blur-[80px] animate-float-slow" style="animation-delay:4s;animation-duration:20s"></div>
         
         <div class="relative max-w-7xl mx-auto px-6 py-20 md:py-32">
             <div class="max-w-4xl">
@@ -86,7 +99,7 @@
                 
                 <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.08] tracking-tight mb-6 fade-in-up delay-100">
                     We Schedule Meetings.<br>
-                    <span class="text-gradient">You Close Deals.</span>
+                    <span class="text-gradient-animate">You Close Deals.</span>
                 </h1>
                 
                 <p class="text-lg md:text-xl text-gray-400 max-w-2xl mb-10 leading-relaxed fade-in-up delay-200">
@@ -94,18 +107,38 @@
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-4 fade-in-up delay-300">
-                    <a href="#book" class="group bg-accent hover:bg-accent-light text-navy-950 font-semibold px-8 py-4 rounded-xl text-center transition-all duration-200 hover:shadow-xl hover:shadow-accent/20 flex items-center justify-center gap-2">
+                    <a href="#book" class="group btn-glow bg-accent hover:bg-accent-light text-navy-950 font-bold px-8 py-4 rounded-xl text-center transition-all duration-300 hover:shadow-xl hover:shadow-accent/30 hover:scale-[1.03] active:scale-[0.98] ring-2 ring-accent/30 hover:ring-accent/50 flex items-center justify-center gap-2">
                         Book a Discovery Call
                         <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                     </a>
-                    <a href="#process" class="border border-white/15 hover:border-white/30 text-white font-medium px-8 py-4 rounded-xl text-center transition-all duration-200 hover:bg-white/5">
+                    <a href="#process" class="border border-white/15 hover:border-white/30 text-white font-medium px-8 py-4 rounded-xl text-center transition-all duration-300 hover:bg-white/5 hover:scale-[1.02] active:scale-[0.98]">
                         See How It Works
                     </a>
                 </div>
             </div>
 
+            <!-- LIVE CONVERSATION DEMO -->
+            <div class="mt-16 fade-in-up delay-400">
+                <div class="rounded-xl border border-white/10 bg-[#0a1628] shadow-2xl shadow-accent/5 overflow-hidden max-w-2xl">
+                    <div class="flex items-center gap-2 border-b border-white/10 bg-navy-900/80 px-4 py-3">
+                        <div class="flex gap-1.5">
+                            <span class="h-3 w-3 rounded-full bg-[#ff5f57]"></span>
+                            <span class="h-3 w-3 rounded-full bg-[#febc2e]"></span>
+                            <span class="h-3 w-3 rounded-full bg-[#28c840]"></span>
+                        </div>
+                        <span class="ml-2 text-[11px] font-medium text-white/50 uppercase tracking-wider">Live Outbound Call -- Sapper Consulting BDR</span>
+                        <div class="ml-auto flex items-center gap-1.5">
+                            <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                            <span class="text-[10px] text-red-400 font-medium uppercase tracking-wider">Live</span>
+                        </div>
+                    </div>
+                    <div id="conversation-demo" class="p-5 space-y-4 min-h-[280px] font-mono text-sm">
+                    </div>
+                </div>
+            </div>
+
             <!-- HERO STATS -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-12 border-t border-white/5 fade-in-up delay-400">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 pt-12 border-t border-white/5 fade-in-up delay-400">
                 <div class="stat-card">
                     <div class="text-3xl md:text-4xl font-bold text-white mb-1">
                         <span class="counter" data-target="2000">0</span>+

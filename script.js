@@ -1,12 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // === NAVBAR SCROLL ===
+    // === NAVBAR SCROLL (hides announcement bar on scroll) ===
     var navbar = document.getElementById('navbar');
+    var announcementBar = document.getElementById('announcement-bar');
     window.addEventListener('scroll', function () {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
+            if (announcementBar) announcementBar.style.display = 'none';
         } else {
             navbar.classList.remove('scrolled');
+            if (announcementBar) announcementBar.style.display = '';
         }
     });
 
@@ -110,5 +113,90 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+    // === LIVE CONVERSATION DEMO ===
+    var conversationData = [
+        { who: 'sapper', name: 'Sarah (Sapper BDR)', text: 'Hi Mike, this is Sarah calling on behalf of Acme Industrial. I sent you a letter last week -- did you get a chance to look it over?' },
+        { who: 'prospect', name: 'Mike (VP Operations)', text: 'Yeah actually, I did see that come across my desk. You guys do compressor solutions right?' },
+        { who: 'sapper', name: 'Sarah (Sapper BDR)', text: 'Exactly. I know you have some projects coming up this quarter. Would it make sense to set up a 20-minute call with our engineering team to see if we can help?' },
+        { who: 'prospect', name: 'Mike (VP Operations)', text: 'You know what, the timing is actually pretty good. We have a facility expansion in Q3. Let\'s do it.' },
+        { who: 'sapper', name: 'Sarah (Sapper BDR)', text: 'Perfect. I have Thursday at 2pm CT open. I\'ll send the invite to you and your team right now.' },
+        { who: 'booked', text: 'Meeting Booked: Thursday 2:00 PM CT -- Acme Industrial x Client Engineering Team' }
+    ];
+
+    var demoContainer = document.getElementById('conversation-demo');
+    if (demoContainer) {
+        var msgIndex = 0;
+        var demoStarted = false;
+
+        function addTypingIndicator(who) {
+            var el = document.createElement('div');
+            el.className = 'chat-msg';
+            el.id = 'typing-indicator';
+            el.innerHTML =
+                '<div class="chat-avatar ' + who + '">' + (who === 'sapper' ? 'SC' : 'MK') + '</div>' +
+                '<div class="chat-bubble"><div class="typing-indicator"><span></span><span></span><span></span></div></div>';
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+            demoContainer.appendChild(el);
+            demoContainer.scrollTop = demoContainer.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            var t = document.getElementById('typing-indicator');
+            if (t) t.remove();
+        }
+
+        function addMessage() {
+            if (msgIndex >= conversationData.length) {
+                setTimeout(function () {
+                    demoContainer.innerHTML = '';
+                    msgIndex = 0;
+                    addMessage();
+                }, 4000);
+                return;
+            }
+            var msg = conversationData[msgIndex];
+
+            if (msg.who === 'booked') {
+                removeTypingIndicator();
+                var el = document.createElement('div');
+                el.className = 'meeting-booked';
+                el.innerHTML =
+                    '<p style="font-size:11px;color:rgba(16,185,129,0.7);font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px">&#10003; Meeting Confirmed</p>' +
+                    '<p style="font-size:13px;color:#10b981;font-weight:600">' + msg.text + '</p>';
+                demoContainer.appendChild(el);
+                demoContainer.scrollTop = demoContainer.scrollHeight;
+                msgIndex++;
+                setTimeout(addMessage, 5000);
+                return;
+            }
+
+            addTypingIndicator(msg.who);
+            var delay = 1200 + Math.random() * 800;
+            setTimeout(function () {
+                removeTypingIndicator();
+                var el = document.createElement('div');
+                el.className = 'chat-msg';
+                el.innerHTML =
+                    '<div class="chat-avatar ' + msg.who + '">' + (msg.who === 'sapper' ? 'SC' : 'MK') + '</div>' +
+                    '<div class="chat-bubble">' +
+                    '<div class="chat-name ' + msg.who + '-name">' + msg.name + '</div>' +
+                    '<p>' + msg.text + '</p></div>';
+                demoContainer.appendChild(el);
+                demoContainer.scrollTop = demoContainer.scrollHeight;
+                msgIndex++;
+                setTimeout(addMessage, 1500 + Math.random() * 1000);
+            }, delay);
+        }
+
+        var demoObserver = new IntersectionObserver(function (entries) {
+            if (entries[0].isIntersecting && !demoStarted) {
+                demoStarted = true;
+                setTimeout(addMessage, 800);
+            }
+        }, { threshold: 0.3 });
+        demoObserver.observe(demoContainer);
+    }
 
 });
