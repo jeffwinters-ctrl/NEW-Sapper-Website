@@ -1,0 +1,306 @@
+/* === GLOBAL === */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+::selection { background: rgba(49, 159, 225, 0.3); color: #fff; }
+
+/* === HERO GRADIENT === */
+.hero-gradient {
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(49, 159, 225, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 40% at 80% 20%, rgba(49, 159, 225, 0.05) 0%, transparent 50%);
+}
+
+.hero-grid {
+    background-image: 
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+}
+
+/* === TEXT GRADIENT === */
+.text-gradient {
+    background: linear-gradient(135deg, #319fe1 0%, #5bb8f0 50%, #319fe1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* === CTA GRADIENT === */
+.cta-gradient {
+    background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(49, 159, 225, 0.06) 0%, transparent 70%);
+}
+
+/* === NAVBAR === */
+#navbar {
+    background: transparent;
+}
+#navbar.scrolled {
+    background: rgba(2, 12, 27, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* === ANIMATIONS === */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* === SCROLL REVEAL === */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--delay, 0ms);
+}
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* === STAT CARDS === */
+.stat-card {
+    padding: 1rem 0;
+}
+
+/* === PAIN CARDS === */
+.pain-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+.pain-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-4px);
+}
+
+/* === CHANNEL CARDS === */
+.channel-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+}
+.channel-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #319fe1, transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.channel-card:hover {
+    background: rgba(49, 159, 225, 0.04);
+    border-color: rgba(49, 159, 225, 0.2);
+    transform: translateY(-6px);
+}
+.channel-card:hover::before {
+    opacity: 1;
+}
+.channel-number {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba(49, 159, 225, 0.4);
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+}
+.channel-icon {
+    color: #319fe1;
+    margin-bottom: 1rem;
+}
+
+/* === TIMELINE === */
+.timeline-item {
+    display: flex;
+    gap: 1.5rem;
+    padding-bottom: 2.5rem;
+    position: relative;
+}
+.timeline-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 19px;
+    top: 44px;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, rgba(49, 159, 225, 0.3), rgba(49, 159, 225, 0.05));
+}
+.timeline-dot {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: rgba(49, 159, 225, 0.1);
+    border: 1px solid rgba(49, 159, 225, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: #319fe1;
+}
+.timeline-content {
+    padding-top: 0.5rem;
+}
+
+/* === RESULT CARDS === */
+.result-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+}
+.result-bar {
+    width: 0;
+    transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.result-bar.animated {
+    width: var(--width);
+}
+
+/* === TESTIMONIAL CARDS === */
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+.testimonial-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* === INDUSTRY TICKER === */
+.ticker-container {
+    mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+.ticker-track {
+    display: flex;
+    gap: 2rem;
+    animation: ticker 30s linear infinite;
+    width: max-content;
+}
+.ticker-item {
+    white-space: nowrap;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 100px;
+    transition: all 0.3s ease;
+}
+.ticker-item:hover {
+    color: rgba(49, 159, 225, 0.6);
+    border-color: rgba(49, 159, 225, 0.2);
+}
+@keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* === GUARANTEE CARD === */
+.guarantee-card {
+    position: relative;
+    background: linear-gradient(135deg, rgba(49, 159, 225, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(49, 159, 225, 0.15);
+    border-radius: 24px;
+    padding: 3rem 2rem;
+}
+
+/* === COMPARE CARDS === */
+.compare-card {
+    border-radius: 16px;
+    padding: 2rem;
+}
+.compare-bad {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.compare-good {
+    background: rgba(49, 159, 225, 0.04);
+    border: 1px solid rgba(49, 159, 225, 0.15);
+}
+
+/* === FAQ === */
+.faq-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+.faq-item:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+.faq-trigger {
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: left;
+    gap: 1rem;
+}
+.faq-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 0 1.5rem;
+}
+.faq-content p {
+    color: #9ca3af;
+    font-size: 0.875rem;
+    line-height: 1.7;
+}
+.faq-item.active .faq-content {
+    max-height: 300px;
+    padding: 0 1.5rem 1.25rem;
+}
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+}
+.faq-item.active {
+    border-color: rgba(49, 159, 225, 0.2);
+    background: rgba(49, 159, 225, 0.03);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    .stat-card {
+        text-align: center;
+    }
+    .guarantee-card {
+        padding: 2.5rem 1.5rem;
+    }
+}
